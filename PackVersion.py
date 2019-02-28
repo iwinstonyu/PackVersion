@@ -15,7 +15,9 @@ for name in os.listdir("."):
 			
 print("Latest folder: {}".format(latest_folder))
 
-error_level = os.system("\"C:/Program Files/WinRAR/WinRAR.exe\" a {}.rar {} -ibck".format(latest_folder, latest_folder))
+os.system("del {}.rar".format(latest_folder))
+os.system("timeout 3")
+error_level = os.system("\"C:/Program Files/WinRAR/WinRAR.exe\" a -ma4 -md4 -m3 {}.rar {} -ibck".format(latest_folder, latest_folder))
 if error_level is None or error_level != 0:
 	print("Fail compress files: {}".format(error_level))
 	os.system("pause")
